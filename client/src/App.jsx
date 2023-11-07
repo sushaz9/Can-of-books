@@ -21,6 +21,7 @@ function App() {
     if (check) {
       const API = `http://localhost:8080/books/${id}`;
       const res = await axios.delete(API);
+      alert("This book has been deleted.");
       getBooks();
     }
   }
