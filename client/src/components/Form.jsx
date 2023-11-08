@@ -6,9 +6,9 @@ export default function Form({ books, setBooks, book, setBook }) {
     book ?? {
       title: "",
       description: "",
-      imgUrl: "",
       author: "",
       status: false,
+      imgUrl: "",
     }
   );
 
@@ -26,10 +26,11 @@ export default function Form({ books, setBooks, book, setBook }) {
     const res = await axios.post(API, formData);
     setBooks([...books, res.data]);
   }
+
   async function updateBook(event) {
     event.preventDefault();
-    const API = `http://localhost:8080/books${book._id}`;
-    const res = await axios.put(API, formData);
+    const API = `http://localhost:8080/books/${book._id}`;
+    await axios.put(API, formData);
     setBook(formData);
   }
 
@@ -48,16 +49,16 @@ export default function Form({ books, setBooks, book, setBook }) {
         value={formData.description}
       />
       <input
-        name="imgUrl"
-        placeholder="imgUrl"
-        onChange={handleChange}
-        value={formData.imgUrl}
-      />
-      <input
         name="author"
         placeholder="author"
         onChange={handleChange}
         value={formData.author}
+      />
+      <input
+        name="imgUrl"
+        placeholder="imgUrl"
+        onChange={handleChange}
+        value={formData.imgUrl}
       />
       <input
         name="status"

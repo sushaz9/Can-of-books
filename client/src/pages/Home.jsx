@@ -7,7 +7,7 @@ export default function Home({ books, setBooks, deleteBook }) {
       {books.map((book) => {
         return (
           <div key={book._id}>
-            <Link to={`/movie/${movie._id}`}>
+            <Link to={`/book/${book._id}`}>
               <h2>{book.title}</h2>
               <p>{book.description}</p>
               <p>{book.author}</p>
