@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import "./App.css";
-import Form from "./components/Form";
+import Home from "./pages/Home";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import About from "./pages/About";
+import Book from "./pages/Book";
 
 function App() {
   const [books, setBooks] = useState([]);
@@ -20,30 +23,34 @@ function App() {
     const check = confirm("Are you sure?");
     if (check) {
       const API = `http://localhost:8080/books/${id}`;
-      const res = await axios.delete(API);
+      await axios.delete(API);
       alert("This book has been deleted.");
       getBooks();
     }
   }
 
   return (
-    <>
-      <h1>Can of Books</h1>
-      <p>The ultimate book Database</p>
-      {books.map((book) => {
-        return (
-          <div key={book._id}>
-            <h2>{book.title}</h2>
-            <p>{book.description}</p>
-            <p>{book.author}</p>
-            <p>Read: {book.status ? "✅" : "❌"}</p>
-            <img src={book.imgUrl} />
-            <button onClick={() => deleteBook(book._id)}>Delete Book</button>
-          </div>
-        );
-      })}
-      <Form books={books} setBooks={setBooks} />
-    </>
+    <BrowserRouter>
+      <header>
+        <h1>Can of Books</h1>
+        <p>The ultimate book Database</p>
+      </header>
+
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <Home books={books} setBooks={setBooks} deleteBook={deleteBook} />
+          }
+        />
+        <Route path="/about" element={<About />} />
+        <Route path="/book/:id" element={<Book />} />
+      </Routes>
+
+      <footer>
+        <p>Can of Books &copy;</p>
+      </footer>
+    </BrowserRouter>
   );
 }
 
