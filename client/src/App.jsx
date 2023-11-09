@@ -5,8 +5,23 @@ import Home from "./pages/Home";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import About from "./pages/About";
 import Book from "./pages/Book";
+import { useAuth0 } from "@auth0/auth0-react";
+import LoginButton from "./components/LoginButton";
+import LogoutButton from "./components/LogoutButton";
+import Profile from "./components/Profile";
 
 function App() {
+  const { user, isAuthenticated, isLoading } = useAuth0();
+
+  const admins = [
+    "tim.smith@techeducators.co.uk",
+    "rick.astley@techeducators.co.uk",
+  ];
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
+
   const [books, setBooks] = useState([]);
 
   useEffect(() => {
@@ -32,6 +47,14 @@ function App() {
   return (
     <BrowserRouter>
       <header>
+        {isAuthenticated && (
+          <div>
+            <Profile />
+            <LogoutButton />
+          </div>
+        )}
+        {!isAuthenticated && <LoginButton />}
+
         <h1>Can of Books</h1>
         <p>The ultimate book Database</p>
       </header>

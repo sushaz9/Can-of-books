@@ -1,0 +1,61 @@
+* {
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+
+  flex-direction: row;
+}
+
+header {
+  background-color: lightblue;
+  padding: 30px;
+  text-align: center;
+}
+
+button {
+  width: 100px;
+  padding: 10px;
+  background-color: #ffffff;
+  color: black;
+}
+
+header h1 {
+  font-size: 2rem;
+}
+
+.bookInfo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+header p {
+  font-size: 30px;
+}
+
+img {
+  width: 300px;
+  padding: 10px;
+  margin: 20px;
+}
+
+p {
+  height: 10px;
+  display: flex;
+  justify-content: space-around;
+}
+
+form {
+  border: 2px solid purple;
+}
+
+form input {
+  width: 80px;
+}

@@ -28,7 +28,7 @@ export default function Book() {
   }
 
   return (
-    <div>
+    <div className="bookInfo">
       <h2>{book.title}</h2>
       <p>{book.description}</p>
       <p>{book.author}</p>
