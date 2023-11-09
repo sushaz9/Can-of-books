@@ -9,11 +9,12 @@ export default function Home({ books, setBooks, deleteBook }) {
           <div key={book._id}>
             <Link to={`/book/${book._id}`}>
               <h2>{book.title}</h2>
-              <p>{book.description}</p>
-              <p>{book.author}</p>
-              <p>Read: {book.status ? "✅" : "❌"}</p>
-              <img src={book.imgUrl} />
             </Link>
+            <p>{book.description}</p>
+            <p>{book.author}</p>
+            <p>Read: {book.status ? "✅" : "❌"}</p>
+            <img src={book.imgUrl} />
+
             <button onClick={() => deleteBook(book._id)}>Delete Book</button>
           </div>
         );

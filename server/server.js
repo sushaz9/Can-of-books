@@ -15,26 +15,46 @@ app.get("/", (_, response) =>
 );
 
 app.get("/books", async (request, response) => {
-  const books = await Book.find(request.query);
-  response.json(books);
+  try {
+    const books = await Book.find(request.query);
+    response.json(books);
+  } catch (error) {
+    console.log(error);
+    response.status(404).json("404 Book Not Found");
+  }
 });
 
 app.post("/books", async (request, response) => {
-  const newBook = await Book.create(request.body);
-  response.json(newBook);
+  try {
+    const newBook = await Book.create(request.body);
+    response.json(newBook);
+  } catch (error) {
+    console.log(error);
+    response.status(418).json("418 I'm a Teapot");
+  }
 });
 
 app.delete("/books/:id", async (request, response) => {
-  const deletedBook = await Book.findByIdAndDelete(request.params.id);
-  response.json(deletedBook);
+  try {
+    const deletedBook = await Book.findByIdAndDelete(request.params.id);
+    response.json(deletedBook);
+  } catch (error) {
+    console.log(error);
+    response.status(418).json("418 I'm a Teapot");
+  }
 });
 
 app.put("/books/:id", async (request, response) => {
-  const updatedBook = await Book.findByIdAndUpdate(
-    request.params.id,
-    request.body
-  );
-  response.json(updatedBook);
+  try {
+    const updatedBook = await Book.findByIdAndUpdate(
+      request.params.id,
+      request.body
+    );
+    response.json(updatedBook);
+  } catch (error) {
+    console.log(error);
+    response.status(418).json("418 I'm a Teapot");
+  }
 });
 
 app.listen(PORT, () => console.log(`App is running on port ${PORT}`));
