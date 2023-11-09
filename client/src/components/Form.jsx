@@ -35,7 +35,7 @@ export default function Form({ books, setBooks, book, setBook }) {
   }
 
   return (
-    <form onSubmit={book?.name ? updateBook : addBook}>
+    <form onSubmit={book?.title ? updateBook : addBook}>
       <input
         name="title"
         placeholder="title"
@@ -64,9 +64,9 @@ export default function Form({ books, setBooks, book, setBook }) {
         name="status"
         type="checkbox"
         onChange={handleChange}
-        value={formData.status}
+        checked={formData.status}
       />
-      <button>Add Book</button>
+      <button>{book?.title ? "Update Book" : "Add Book"}</button>
     </form>
   );
 }
