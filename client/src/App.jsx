@@ -14,8 +14,9 @@ function App() {
   const { user, isAuthenticated, isLoading } = useAuth0();
 
   const admins = [
-    "tim.smith@techeducators.co.uk",
-    "rick.astley@techeducators.co.uk",
+    "susannahelisabeth1@gmail.com",
+    "najmasy20@gmail.com",
+    "luke.reynolds.92@hotmail.com",
   ];
 
   if (isLoading) {
@@ -57,6 +58,7 @@ function App() {
 
         <h1>Can of Books</h1>
         <p>The ultimate book Database</p>
+        {admins.includes(user?.email) && <a href=""> Admin Page</a>}
       </header>
 
       <Routes>

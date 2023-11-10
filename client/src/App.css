@@ -46,16 +46,28 @@ img {
   margin: 20px;
 }
 
-p {
-  height: 10px;
-  display: flex;
-  justify-content: space-around;
-}
-
 form {
   border: 2px solid purple;
 }
 
 form input {
   width: 80px;
+}
+
+footer {
+  background-color: lightblue;
+  padding: 30px;
+  text-align: center;
+}
+
+Link {
+  color: rgb(0, 0, 0);
+}
+
+.allBooks {
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }

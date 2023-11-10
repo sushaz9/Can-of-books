@@ -3,7 +3,7 @@ import Form from "../components/Form";
 
 export default function Home({ books, setBooks, deleteBook }) {
   return (
-    <div>
+    <div className="allBooks">
       {books.map((book) => {
         return (
           <div key={book._id}>
